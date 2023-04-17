@@ -1,18 +1,24 @@
-package result;
-
+package solution;
 import java.util.Scanner;
 
-class Ex01_01{
-	public static void main (String[] args) {
-		Scanner input = new Scanner(System.in);
-		String s = input.next();
-		char c = input.next().toUpperCase().charAt(0); 
-		int sum = 0;
-		for(int i = 0; i < s.length(); ++i) {
-			char a = s.toUpperCase().charAt(i);
-			if(c == a)
-				++sum;
-		}
-		System.out.println(sum);
+class Main{
+	public int solution(String str, char t) {
+	int answer = 0;
+	str = str.toUpperCase();
+	t = Character.toUpperCase(t);
+	for(char x : str.toCharArray()) {
+		if(x==t) answer ++;
 	}
-	
+	return answer;
+	}
+}
+
+public class Ex01_01 {
+	public static void main(String[] args) {
+		Main T = new Main();
+		Scanner kb = new Scanner(System.in);
+		String str = kb.next();
+		char c = kb.next().charAt(0);
+		System.out.print(T.solution(str, c));
+	}
+}
