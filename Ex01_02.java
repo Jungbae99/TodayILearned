@@ -2,7 +2,7 @@ package result;
 import java.util.Scanner;
 
 class T1{
-	public String solution(String str) {
+	public String solution(String str) { // 문자열에서가장 긴 단어를 return하는 메서드
 		String arr[] = str.split(" ");
 		int max = arr[0].length();
 		String answer = arr[0];
