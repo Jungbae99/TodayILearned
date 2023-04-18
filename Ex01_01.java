@@ -1,6 +1,6 @@
 package solution;
 import java.util.Scanner;
-
+// 문자열과 문자를 매개변수로 받았을때 문자열에 해당하는 문자가 몇 개 들어있는지 확인
 class Main{
 	public int solution(String str, char t) {
 	int answer = 0;
