@@ -167,6 +167,34 @@ public int[] solution(String s, char t){
 	return answer;
 }
 */
+/*
+public String solution(String s) { // 문자열 aaaaabbb 를 a5b3으로 압축하기
+		String answer="";
+		s=s+" ";
+		int cnt=1;
+		for(int i=0; i<s.length()-1; i++){
+			if(s.charAt(i)==s.charAt(i+1)) cnt++;
+			else{
+				answer+=s.charAt(i);
+				if(cnt>1) answer+=String.valueOf(cnt);
+				cnt=1;
+			}
+		}
+		return answer;
+	}
+*/
 
+/*
+public String solution(int n, String s) { // #을 1로, *을 0으로 취급하는 문자열을 받아서 ASCII코드로 변환해 복호화하는 로직
+		String answer="";
+		for(int i=0; i<n; i++){
+			String tmp=s.substring(0, 7).replace('#', '1').replace('*', '0');
+			int num=Integer.parseInt(tmp, 2);
+			answer+=(char)num;
+			s=s.substring(7);
+		}
+		return answer;
+	}
+*/
 
 
