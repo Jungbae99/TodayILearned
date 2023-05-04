@@ -1,0 +1,83 @@
+/*
+
+// 입력받은뒤, 알파벳이 가장 많이 들어있는 것을 추출
+public char solution(int n, String s) {
+		char answer=' ';
+		HashMap<Character, Integer> map=new HashMap<>();
+		for(char x : s.toCharArray()){
+			map.put(x, map.getOrDefault(x, 0)+1); 
+		}
+		int max=Integer.MIN_VALUE;
+		for(char key : map.keySet()){
+			//System.out.println(key+" "+map.get(key));
+			if(map.get(key)>max){
+				max=map.get(key);
+				answer=key;
+			}
+		}
+		return answer;
+*/
+
+
+/*
+//아나그램
+public String solution(String s1, String s2) {
+		String answer="YES";
+		HashMap<Character, Integer> map=new HashMap<>();
+		for(char x : s1.toCharArray()){
+			map.put(x, map.getOrDefault(x, 0)+1);
+		}
+		for(char x : s2.toCharArray()){
+			if(!map.containsKey(x) || map.get(x)==0) return "NO";
+			map.put(x, map.get(x)-1); 
+		}
+		return answer;
+*/
+
+/*
+//모든 아나그램(Hash + SlidingWindow
+public int solution(String str1, String str2) {
+	int answer =0;
+	String[] arr = str1.split("");
+	HashMap<Character, Integer> map = new HashMap<>();
+	HashMap<Character, Integer> map2 = new HashMap<>();
+	for(char x: str2.toCharArray()) map2.put(x, map2.getOrDefault(x, 0)+1);
+	//map2 (비교할거) 완성
+	int r = str2.length()-1;
+	for(int i=0; i<r; i++) map.put(str1.charAt(i), map.getOrDefault(str1.charAt(i), 0)+1);
+	// 비교할문자중 마지막 한 개 빼고 map1에다 세팅
+	int lt = 0;
+	for(int rt = r; rt<str1.length(); rt++) {
+		map.put(str1.charAt(rt), map.getOrDefault(str1.charAt(rt), 0)+1);
+		// 비교할 마지막 문자를 채우며 핵심구문 시작;
+		if(map.equals(map2)) answer ++;
+		// 같으면 count
+		map.put(str1.charAt(lt), map.get(str1.charAt(lt))-1);
+		// 첫번째 문자의 값을 --;
+		if(map.get(str1.charAt(lt))==0) map.remove(str1.charAt(lt));
+		// 첫번째 문자가 중복되지 않는 값이라면 삭제, 아니면 둔다
+		lt++;
+	}
+	return answer;
+*/
+
+/*
+// TreeSet을이용해서 모든 조합 중에 k번째로 큰 수를 구하기
+	public int solution(int[] arr, int n, int k) {
+		int answer = -1;
+		TreeSet<Integer> Tset = new TreeSet<>(Collections.reverseOrder());
+		for(int i=0; i<n; i++){
+			for(int j=i+1; j<n; j++){
+				for(int l=j+1; l<n; l++){
+					Tset.add(arr[i]+arr[j]+arr[l]);
+				}
+			}
+		}
+		int cnt=0;
+		for(int x : Tset){
+			//System.out.println(x);
+			cnt++;
+			if(cnt==k) return x;
+		}		
+		return answer;
+*/
