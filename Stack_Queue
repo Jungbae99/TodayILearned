@@ -32,3 +32,124 @@ public String solution(String str){
     return answer;
 */
 
+/*
+// 후위식 계산하기
+public int solution(String a){
+        int answer = 0;
+        Stack<Character> st = new Stack<>();
+        int sum=0;
+        for(char c : a.toCharArray()){
+            if(String.valueOf(c).matches("[0-9]")) st.push(c);
+            else{
+                if(sum == 0) {
+                    sum = Character.getNumericValue(st.pop());
+                    if (c == '+') sum += Character.getNumericValue(st.pop());
+                    else if (c == '-') sum -= Character.getNumericValue(st.pop());
+                    else if (c == '*') sum *= Character.getNumericValue(st.pop());
+                    else sum /= Character.getNumericValue(st.pop());
+                    continue;
+                }
+                if (c=='+') sum += Character.getNumericValue(st.pop());
+                else if (c == '-') sum -= Character.getNumericValue(st.pop());
+                else if (c== '*') sum *= Character.getNumericValue(st.pop());
+                else sum /= Character.getNumericValue(st.pop());
+                }
+            }
+        answer = sum;
+        return answer;
+
+*/
+
+/*
+// 쇠막대기 레이저로 가르기 -> 총 막대기개수 구하기
+ public int solution(String a){
+        int answer = 0;
+        Stack<Integer> st = new Stack<>();
+        for (int i = 0 ; i< a.length() ; i++) {
+            char c = a.charAt(i);
+            if (c == '(') {
+                st.push(i);
+            }
+            else {
+                if (st.peek() + 1 == i) {
+                    st.pop();
+                    answer += st.size();
+                }else{
+                    st.pop();
+                    answer += 1;
+                }
+            }
+        }
+        return answer;
+*/
+
+/*
+// 둥글게 앉은 왕자끼리 공주 구하러가기 > Queue 
+ public int solution(int num1, int num2) {
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 1; i <= num1; i++) {
+            q.offer(i);
+        }
+        while (q.size() > 1) {
+            for (int i = 0; i < num2; i++) {
+                if(i==num2-1){
+                    q.poll();
+                    break;
+                }
+                q.offer(q.poll());
+            }
+        }
+
+        return q.poll();
+*/
+
+/*
+// 교육과정(알파벳), 총과목(알파벳)일때 총과목에 교육과정이 순서대로 들어가있는지 판별하기
+  public String solution(String essential, String total) {
+        Queue<Character> q = new LinkedList<>();
+        String answer ="NO";
+        for(char x : essential.toCharArray()) q.offer(x);
+        for(char x : total.toCharArray()){
+            if(q.peek() == x) q.poll();
+            if(q.size() == 0) return "YES";
+        }
+        return answer;
+*/
+
+
+/*
+//응급실에서 위급한순서대로 (위급동일하면 선착순으로) 대기표 만들기 
+class Person{
+    int id;
+    int priority;
+    public Person (int id, int priority){
+        this.id = id;
+        this.priority = priority;
+    }
+}
+
+class Try08{
+    public int solution(int total, int index, int[] arr){
+        int answer = 0;
+        Queue<Person> q = new LinkedList<>();
+        for(int i=0; i<total; i++){
+            q.offer(new Person(i, arr[i]));
+        }
+        while (!q.isEmpty()) {
+            Person tmp = q.poll();
+            for (Person x : q) {
+                if (x.priority > tmp.priority) {
+                    q.offer(tmp);
+                    tmp =null;
+                    break;
+                }
+            }
+            if(tmp!=null){
+                answer++;
+                if(tmp.id == index) return answer;
+            }
+        }
+        return answer;
+    }
+}
+*/
